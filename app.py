@@ -1,5 +1,6 @@
+import json
 from flask import Flask, jsonify, request
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 
 app = Flask(__name__)
 
@@ -20,43 +21,46 @@ mongo = PyMongo(app)
 def hello():
     return jsonify({"about":"Hello World!"})
 
-@app.route('/framework', methods=['GET'])
-def get_all_frameworks():
-    framework = mongo.db.framework 
+@app.route('/dialog', methods=['GET'])
+def get_all_dialogs():
+    dialog = mongo.db.dialog
 
-    output = []
+    dialogs = []
 
-    for q in framework.find():
-        output.append({'name' : q['name'], 'language' : q['language']})
+    for d in dialog.find():
+        dialogs.append(d['name']) #, '_id' : str(d['_id'])
 
-    return jsonify({'result' : output})
+    return jsonify(dialogs)
 
-@app.route('/framework/<name>', methods=['GET'])
-def get_one_framework(name):
-    framework = mongo.db.framework
 
-    q = framework.find_one({'name' : name})
+@app.route('/dialog/<name>', methods=['GET'])
+def get_last_dialog(name):
+    dialog = mongo.db.dialog
+    
+    d = dialog.find({'name' : name}).sort( '_id' , pymongo.DESCENDING)[0]
+    # d = dialog.find_one({'name' : name})
 
-    if q:
-        output = {'name' : q['name'], 'language' : q['language']}
+    if d:
+        output = {'name' : d['name'], 'testcases': d['testcases']}
     else:
         output = 'No results found'
 
-    return jsonify({'result' : output})
+    return output
 
-@app.route('/framework', methods=['POST'])
-def add_framework():
-    framework = mongo.db.framework 
+@app.route('/dialog', methods=['POST'])
+def add_dialog():
+    dialog = mongo.db.dialog 
 
     name = request.json['name']
-    language = request.json['language']
+    print('add: '+name)
+    testcases = request.json['cases']
 
-    framework_id = framework.insert({'name' : name, 'language' : language})
-    new_framework = framework.find_one({'_id' : framework_id})
+    dialog_id = dialog.insert({'name' : name, 'testcases' : testcases})
+    new_dialog = dialog.find_one({'_id' : dialog_id})
+    
+    output = {'name' : new_dialog['name'], '_id': str(dialog_id)}
 
-    output = {'name' : new_framework['name'], 'language' : new_framework['language']}
-
-    return jsonify({'result' : output})
+    return output
 
 
 if __name__ == '__main__' :
