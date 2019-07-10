@@ -10,6 +10,9 @@ Follow the instruction in der [Docs](https://docs.python.org/3/tutorial/venv.htm
 
     $ source venv/bin/activate
 
+Freeze the requirements:
+    $ pip freeze > requirements.txt
+
 ## Select Interpreter (VS Code)
 
 To select a specific environment, use the Command Palette (⇧⌘P).
@@ -36,7 +39,7 @@ Integrate with [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/).
     
 Start with docker compose.
 
-    $ docker-compose up 
+    $ docker-compose up mongodb
 
 Edit in NoSQLBooster for MongoDB.
 
@@ -47,3 +50,9 @@ Edit in NoSQLBooster for MongoDB.
     $ flask run
 
 Test with ```curl -v http://127.0.0.1:5000```.
+
+##  Docker 
+
+    $ docker-compose build
+    $ docker-compose up manager
+    $ docker-compose exec manager /bin/bash

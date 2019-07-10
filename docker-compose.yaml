@@ -1,14 +1,30 @@
 version: '3.3'
 services:
- mongo:
-   image: mongo
-   ports:
-     - "27017:27017"
-   volumes:
-     - './db:/data/db'
-   environment:
-    - MONGO_INITDB_ROOT_USERNAME=user
-    - MONGO_INITDB_ROOT_PASSWORD=password
-    - MONGO_INITDB_DATABASE=test
-    - MONGO_NON_ROOT_USERNAME=app
-    - MONGO_NON_ROOT_PASSWORD=password
+
+  manager:
+      image: manager:latest
+      build: ./manager
+      ports:
+      - "5000:5000"
+      volumes:
+      - './manager:/app'
+      environment:
+      - FLASK_ENV=development
+      command: ['flask', 'run', '--host=0.0.0.0']
+      depends_on:
+        - mongodb
+
+  mongodb:
+    image: mongo
+    expose: 
+      - "27017"
+    ports:
+      - "27017:27017"
+    volumes:
+      - './db:/data/db'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=test
+      - MONGO_NON_ROOT_USERNAME=app
+      - MONGO_NON_ROOT_PASSWORD=password

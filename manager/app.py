@@ -1,8 +1,10 @@
 import json
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo, pymongo
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['MONGO_DBNAME'] = 'test'
 
@@ -13,7 +15,7 @@ app.config['MONGO_DBNAME'] = 'test'
 
 # mongo_client = MongoClient('mongodb://%s:%s@%s:%s/' % (username, password, host, port))
 
-app.config['MONGO_URI'] = 'mongodb://app:password@localhost:27017/test'
+app.config['MONGO_URI'] = 'mongodb://app:password@mongodb:27017/test'
 
 mongo = PyMongo(app)
 
@@ -64,4 +66,4 @@ def add_dialog():
 
 
 if __name__ == '__main__' :
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True)
