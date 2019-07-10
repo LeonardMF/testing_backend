@@ -3,7 +3,7 @@ services:
 
   manager:
       image: manager:latest
-      build: ./manager
+      build: ./manager    
       ports:
       - "5000:5000"
       volumes:

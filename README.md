@@ -56,3 +56,9 @@ Test with ```curl -v http://127.0.0.1:5000```.
     $ docker-compose build
     $ docker-compose up manager
     $ docker-compose exec manager /bin/bash
+
+## Start with Rasa 
+
+    $  docker-compose -f docker-compose.yaml -f ../testing_bot/docker-compose.yml up
+
+[Docs](https://docs.docker.com/compose/reference/overview/#specifying-multiple-compose-files)
