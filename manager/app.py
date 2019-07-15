@@ -1,6 +1,7 @@
 import json
+
 from flask import Flask, jsonify, request
-from flask_pymongo import PyMongo, pymongo
+from flask_pymongo import PyMongo, pymongo, ObjectId
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -55,7 +56,7 @@ def add_dialog():
 
     name = request.json['name']
     print('add: '+name)
-    testcases = request.json['cases']
+    testcases = request.json['testcases']
 
     dialog_id = dialog.insert({'name' : name, 'testcases' : testcases})
     new_dialog = dialog.find_one({'_id' : dialog_id})
@@ -64,6 +65,61 @@ def add_dialog():
 
     return output
 
+@app.route('/test', methods=['GET'])
+def get_all_tests():
+    test = mongo.db.test
+
+    tests = []
+
+    for t in test.find():
+        tests.append({'name' : t['name'], '_id': str(t['_id'])}) 
+
+    return jsonify(tests)
+
+@app.route('/test/<id>', methods=['GET'])
+def get_last_test(id):
+    test = mongo.db.test
+    
+    # t = test.find({'_id' : id}).sort( '_id' , pymongo.DESCENDING)[0]
+    t = test.find_one({'_id' : ObjectId(id)})
+
+    if t:
+        output = {'_id' : str(t['_id']), 'name' : t['name'], 'datetime': t['datetime'], 'testturns': t['testturns']}
+    else:
+        output = 'No results found'
+
+    return output
+
+@app.route('/test', methods=['POST'])
+def add_test():
+    test = mongo.db.test 
+
+    name = request.json['name']
+    datetime = request.json['datetime']
+    testturns = request.json['testturn']
+
+    test_id = test.insert({'name' : name, 'datetime': datetime, 'testturns' : testturns})
+    new_test = test.find_one({'_id' : test_id})
+    
+    output = {'_id': str(test_id),
+              'name' : new_test['name'],
+              'datetime' : new_test['datetime'],
+              'testturn': new_test['testturns']}
+    return output
+
+# @app.route('/test/<id>', methods=['PATCH'])
+# def patch_test(id):
+#     test = mongo.db.test
+    
+#     mongo.db.users.update_one(
+#                 request.json['testturn'], {'$set': data.get('payload', {})})
+
+#     if t:
+#         output = {'name' : t['name'], 'datetime': t['datetime'], 'testturns': t['testturns']}
+#     else:
+#         output = 'No results found'
+
+#     return output
 
 if __name__ == '__main__' :
     app.run(host="0.0.0.0",debug=True)
