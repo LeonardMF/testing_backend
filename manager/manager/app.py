@@ -1,8 +1,10 @@
 import json
 
-from flask import Flask, jsonify, request
+from flask import Flask, Blueprint, jsonify, request
 from flask_pymongo import PyMongo, pymongo, ObjectId
 from flask_cors import CORS
+
+from manager.hello_world import hello_world
 
 app = Flask(__name__)
 CORS(app)
@@ -20,9 +22,7 @@ app.config['MONGO_URI'] = 'mongodb://app:password@mongodb:27017/test'
 
 mongo = PyMongo(app)
 
-@app.route("/")
-def hello():
-    return jsonify({"about":"Hello World!"})
+app.register_blueprint(hello_world)
 
 @app.route('/dialog', methods=['GET'])
 def get_all_dialogs():
