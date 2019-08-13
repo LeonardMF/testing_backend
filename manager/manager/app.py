@@ -7,6 +7,7 @@ from flask_cors import CORS
 from manager.extensions import mongo
 from manager.hello_world import hello_world
 from manager.dialog_endpoint import dialog_endpoint
+from manager.result_endpoint import result_endpoint
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +27,7 @@ mongo.init_app(app)
 
 app.register_blueprint(hello_world)
 app.register_blueprint(dialog_endpoint)
+app.register_blueprint(result_endpoint)
 
 if __name__ == '__main__' :
     app.run(host="0.0.0.0",debug=True)
