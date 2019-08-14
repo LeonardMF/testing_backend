@@ -40,11 +40,12 @@ def get_all_results():
     results = []
 
     for r in result.find():
-        results.append({'dialogName' : r['dialogName'],
+        results.append({'_id': str(r['_id']),
+                        'dialogName' : r['dialogName'],
                         'dialogDescription' : r['dialogDescription'],
                         'assistant' : r['assistant'],
                         'datetime' : r['datetime'],
-                        '_id': str(r['_id'])}) 
+                        'testcases': r['testcases']}) 
 
     return jsonify(results)
 
