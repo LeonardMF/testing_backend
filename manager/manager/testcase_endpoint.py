@@ -5,11 +5,11 @@ from flask_pymongo import PyMongo, pymongo, ObjectId
 
 from manager.extensions import mongo
 
-dialog_endpoint = Blueprint('dialog_endpoint', __name__)
+testcase_endpoint = Blueprint('testcase_endpoint', __name__)
 
 
-@dialog_endpoint.route('/dialog', methods=['GET'])
-def get_all_dialogs():
+@testcase_endpoint.route('/testcase', methods=['GET'])
+def get_all_testcases():
     dialog = mongo.db.dialog
 
     dialogs = []
@@ -20,8 +20,8 @@ def get_all_dialogs():
     return jsonify(dialogs)
 
 
-@dialog_endpoint.route('/dialog/<name>', methods=['GET'])
-def get_last_dialog(name):
+@testcase_endpoint.route('/testcase/<name>', methods=['GET'])
+def get_last_testcase(name):
     dialog = mongo.db.dialog
     
     d = dialog.find({'name' : name}).sort( '_id' , pymongo.DESCENDING)[0]
@@ -34,8 +34,8 @@ def get_last_dialog(name):
 
     return output
 
-@dialog_endpoint.route('/dialog', methods=['POST'])
-def add_dialog():
+@testcase_endpoint.route('/testcase', methods=['POST'])
+def add_testcase():
     dialog = mongo.db.dialog 
 
     name = request.json['name']

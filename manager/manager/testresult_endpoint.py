@@ -5,10 +5,10 @@ from flask_pymongo import PyMongo, pymongo, ObjectId
 
 from manager.extensions import mongo
 
-result_endpoint = Blueprint('result_endpoint', __name__)
+testresult_endpoint = Blueprint('testresult_endpoint', __name__)
 
-@result_endpoint.route('/result', methods=['POST'])
-def add_result():
+@testresult_endpoint.route('/testresult', methods=['POST'])
+def add_testresult():
     result = mongo.db.result 
 
     dialogName = request.json['dialogName']
@@ -33,8 +33,8 @@ def add_result():
               'testcases': new_result['testcases']}
     return output
 
-@result_endpoint.route('/result', methods=['GET'])
-def get_all_results():
+@testresult_endpoint.route('/testresult', methods=['GET'])
+def get_all_testresults():
     result = mongo.db.result 
 
     results = []
@@ -49,8 +49,8 @@ def get_all_results():
 
     return jsonify(results)
 
-@result_endpoint.route('/result/<id>', methods=['GET'])
-def get_last_test(id):
+@testresult_endpoint.route('/testresult/<id>', methods=['GET'])
+def get_last_testresult(id):
     result = mongo.db.result
     
     r = result.find_one({'_id' : ObjectId(id)})
@@ -67,6 +67,27 @@ def get_last_test(id):
 
     return output
 
+# @result_endpoint.route('/result/<id>', methods=['PATCH'])
+# def add_to_result(id):
+#     result = mongo.db.result
+    
+#     // r = result.find_one({'_id' : ObjectId(id)})
+
+# mongo.db.users.update_one( request.json['testturn'], {'$set': data.get('payload', {})})
+
+
+#     if r:
+#         r['testcases'].append{}
+#         output = {'_id' : str(r['_id']),
+#                   'dialogName' : r['dialogName'],
+#                   'dialogDescription' : r['dialogDescription'],
+#                   'assistant' : r['assistant'],
+#                   'datetime' : r['datetime'],
+#                   'testcases': r['testcases']}
+#     else:
+#         output = 'No results found'
+
+#     return output
 
 
 # @app.route('/test/<id>', methods=['PATCH'])
