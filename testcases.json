@@ -1,0 +1,1430 @@
+[
+  {
+    "description": "Uhrzeitansage",
+    "name": "TEST_TIME",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "time",
+                "value": "checkTime"
+              }
+            ],
+            "intent": "getTime",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "start",
+        "prompt": "wie viel Uhr ist es?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "time",
+              "value": "checkTime"
+            }
+          ],
+          "intent": "getTime",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": "OK Google"
+      }
+    ]
+  },
+  {
+    "description": "Uhrzeitansage für eine Stadt",
+    "name": "TEST_TIME_CITY",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "time",
+                "value": "checkTime-1"
+              },
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "city",
+                "value": "lissabon"
+              }
+            ],
+            "intent": "getTime",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "start",
+        "prompt": "wie viel Uhr ist es in Lissabon?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "time",
+              "value": "checkTime-1"
+            },
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "city",
+              "value": "lissabon"
+            }
+          ],
+          "intent": "getTime",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": "OK Google"
+      }
+    ]
+  },
+  {
+    "description": "Uhrzeitansage im Kontext",
+    "name": "TEST_TIME_DIALOG",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "time",
+                "value": "checkTime"
+              }
+            ],
+            "intent": "getTime",
+            "minConfidence": 0.75,
+            "nextTurn": "next"
+          }
+        ],
+        "name": "start",
+        "prompt": "wie viel Uhr ist es?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "time",
+              "value": "checkTime"
+            }
+          ],
+          "intent": "getTime",
+          "minConfidence": 0.75,
+          "nextTurn": "next"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "time",
+                "value": "checkTime-1"
+              },
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "city",
+                "value": "lissabon"
+              }
+            ],
+            "intent": "getTime",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "next",
+        "prompt": "und in Lissabon?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "time",
+              "value": "checkTime-1"
+            },
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "city",
+              "value": "lissabon"
+            }
+          ],
+          "intent": "getTime",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": "OK Google"
+      }
+    ]
+  },
+  {
+    "description": "Fahrauskunpft der BVG",
+    "name": "TEST_BVG",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.75,
+            "nextTurn": "request_connection"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne den BVG Skill",
+        "testCriteria": {
+          "entities": [],
+          "intent": "greeting",
+          "minConfidence": 0.75,
+          "nextTurn": "request_connection"
+        },
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStation",
+            "minConfidence": 0.75,
+            "nextTurn": "station_from"
+          },
+          {
+            "entities": [],
+            "intent": "requestTime",
+            "minConfidence": 0.75,
+            "nextTurn": "departure_time"
+          },
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "station_from",
+                "value": "seestraße"
+              },
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "station_to",
+                "value": "Ernst-Reuter-Platz"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "request_connection",
+        "prompt": "Wie komme ich zum Ernst-Reuter-Platz?",
+        "testCriteria": {
+          "entities": [],
+          "intent": "requestStation",
+          "minConfidence": 0.75,
+          "nextTurn": "station_from"
+        },
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestTime",
+            "minConfidence": 0.75,
+            "nextTurn": "departure_time"
+          },
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "station_from",
+                "value": "seestraße"
+              },
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "station_to",
+                "value": "Ernst-Reuter-Platz"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "station_from",
+        "prompt": "Seestraße",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "station_from",
+              "value": "seestraße"
+            },
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "station_to",
+              "value": "Ernst-Reuter-Platz"
+            }
+          ],
+          "intent": "connection",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStation",
+            "minConfidence": 0.75,
+            "nextTurn": "station_from"
+          },
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "station_from",
+                "value": "seestraße"
+              },
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "station_to",
+                "value": "Ernst-Reuter-Platz"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "departure_time",
+        "prompt": "Jetzt",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "station_from",
+              "value": "seestraße"
+            },
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "station_to",
+              "value": "Ernst-Reuter-Platz"
+            }
+          ],
+          "intent": "connection",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "Wettervorhersage",
+    "name": "TEST_WEATHER",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "weather",
+                "value": "checkWeather"
+              }
+            ],
+            "intent": "getWeather",
+            "minConfidence": 0.75,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "start",
+        "prompt": "wie ist das Wetter morgen?"
+      }
+    ]
+  },
+  {
+    "description": "Timer",
+    "name": "TEST_TIMER",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestDuration",
+            "minConfidence": 0.5,
+            "nextTurn": "setDuration"
+          }
+        ],
+        "name": "start",
+        "prompt": "stell einen Timer",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "duration",
+                "value": "3"
+              }
+            ],
+            "intent": "confirmTimer",
+            "minConfidence": 0.5,
+            "nextTurn": "stopTimer"
+          }
+        ],
+        "name": "setDuration",
+        "prompt": "3 Minuten",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "confirmStop",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "stopTimer",
+        "prompt": "stop den Timer",
+        "wakeword": "Alexa"
+      }
+    ]
+  },
+  {
+    "description": "Entities im Kontext",
+    "name": "TEST_VUI",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "name",
+                "value": "abraham lincoln"
+              }
+            ],
+            "intent": "getPresident",
+            "minConfidence": 0.5,
+            "nextTurn": "age_dead"
+          }
+        ],
+        "name": "start",
+        "prompt": "wer war der 16. Präsident der Vereinigten Staaten?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "entity",
+              "value": "abraham lincoln"
+            }
+          ],
+          "intent": "getPresident",
+          "minConfidence": 0.75,
+          "nextTurn": "age_dead"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "age",
+                "value": "56"
+              }
+            ],
+            "intent": "getAgeDead",
+            "minConfidence": 0.5,
+            "nextTurn": "place_of_birth"
+          }
+        ],
+        "name": "age_dead",
+        "prompt": "wie alt war er, als er starb? ",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "age",
+              "value": "56"
+            }
+          ],
+          "intent": "getAgeDead",
+          "minConfidence": 0.75,
+          "nextTurn": "place_of_birth"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "city",
+                "value": "hodgenville"
+              }
+            ],
+            "intent": "getCityBorn",
+            "minConfidence": 0.5,
+            "nextTurn": "restaurant"
+          }
+        ],
+        "name": "place_of_birth",
+        "prompt": "wo wurde er geboren?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "city",
+              "value": "hodgenville"
+            }
+          ],
+          "intent": "getCityBorn",
+          "minConfidence": 0.75,
+          "nextTurn": "restaurant"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "city",
+                "value": "hodgenville"
+              }
+            ],
+            "intent": "getRestaurant",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "restaurant",
+        "prompt": "was ist das beste Restaurant dort?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "city",
+              "value": "hodgenville"
+            }
+          ],
+          "intent": "getRestaurant",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": "OK Google"
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindung A",
+    "name": "HVV_VERBINDUNG_A",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "Verbindungen",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          },
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationFrom",
+        "prompt": "Hamburg Hauptbahnhof",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationTo",
+        "prompt": "Reeperbahn",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindung B",
+    "name": "HVV_VERBINDUNG_B",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "wie komme ich zur Reeperbahn?",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationFrom",
+        "prompt": "Hamburg Hauptbahnhof",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindung C",
+    "name": "HVV_VERBINDUNG_C",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "wie komme ich von Hamburg Hauptbahnhof zur Reeperbahn?",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "Entities im Kontext",
+    "name": "TEST_VUI",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "name",
+                "value": "abraham lincoln"
+              }
+            ],
+            "intent": "getPresident",
+            "minConfidence": 0.5,
+            "nextTurn": "age_dead"
+          }
+        ],
+        "name": "start",
+        "prompt": "wer war der 16. Präsident der Vereinigten Staaten?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "entity",
+              "value": "abraham lincoln"
+            }
+          ],
+          "intent": "getPresident",
+          "minConfidence": 0.75,
+          "nextTurn": "age_dead"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "age",
+                "value": "56"
+              }
+            ],
+            "intent": "getAgeDead",
+            "minConfidence": 0.5,
+            "nextTurn": "place_of_birth"
+          }
+        ],
+        "name": "age_dead",
+        "prompt": "wie alt war er, als er starb? ",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "age",
+              "value": "56"
+            }
+          ],
+          "intent": "getAgeDead",
+          "minConfidence": 0.75,
+          "nextTurn": "place_of_birth"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "city",
+                "value": "hodgenville"
+              }
+            ],
+            "intent": "getCityBorn",
+            "minConfidence": 0.5,
+            "nextTurn": "restaurant"
+          }
+        ],
+        "name": "place_of_birth",
+        "prompt": "wo wurde er geboren?",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "city",
+              "value": "hodgenville"
+            }
+          ],
+          "intent": "getCityBorn",
+          "minConfidence": 0.75,
+          "nextTurn": "restaurant"
+        },
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "flag": false,
+                "minConfidence": 0.75,
+                "name": "city",
+                "value": "hodgenville"
+              }
+            ],
+            "intent": "getRestaurant",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "restaurant",
+        "prompt": "was ist das beste Restaurant dort",
+        "testCriteria": {
+          "entities": [
+            {
+              "flag": false,
+              "minConfidence": 0.75,
+              "name": "city",
+              "value": "hodgenville"
+            }
+          ],
+          "intent": "getRestaurant",
+          "minConfidence": 0.75,
+          "nextTurn": "end"
+        },
+        "wakeword": "OK Google"
+      }
+    ]
+  },
+  {
+    "description": "HVV Google",
+    "name": "HVV_GOOLGE",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "confirmatiom",
+            "minConfidence": 0.5,
+            "nextTurn": "greeting"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestStation"
+          }
+        ],
+        "name": "greeting",
+        "prompt": " ",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "requestStation",
+        "prompt": "Wie komme ich von Hamburg Hauptbahnhof zur Reeperbahn?",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Google",
+    "name": "HVV_GOOLGE",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "confirmation",
+            "minConfidence": 0.5,
+            "nextTurn": "greeting"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "OK Google"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestStation"
+          }
+        ],
+        "name": "greeting",
+        "prompt": " ",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "requestStation",
+        "prompt": "Wie komme ich von Hamburg Hauptbahnhof zur Reeperbahn?",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindung A",
+    "name": "HVV_VERBINDUNG_A",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "Verbindungen",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          },
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationFrom",
+        "prompt": "Hamburg Hauptbahnhof",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationTo",
+        "prompt": "Reeperbahn",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindungen A",
+    "name": "HVV_VERBINDUNGEN_A",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          },
+          {
+            "entities": [],
+            "intent": "confirmation",
+            "minConfidence": 0.5,
+            "nextTurn": "greeting"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "greeting",
+        "prompt": " ",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "Verbindungen",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          },
+          {
+            "entities": [],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationFrom",
+        "prompt": "Hamburg Hauptbahnhof",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationTo",
+        "prompt": "Reeperbahn",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindungen A",
+    "name": "HVV_VERBINDUNGEN_A",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          },
+          {
+            "entities": [],
+            "intent": "confirmation",
+            "minConfidence": 0.5,
+            "nextTurn": "greeting"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "greeting",
+        "prompt": " ",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "Verbindungen",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationTo",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationTo"
+          },
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationFrom",
+        "prompt": "Hamburg Hauptbahnhof",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          },
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationTo",
+        "prompt": "Reeperbahn",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindungen B",
+    "name": "HVV_VERBINDUNGEN_B",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          },
+          {
+            "entities": [],
+            "intent": "confirmation",
+            "minConfidence": 0.5,
+            "nextTurn": "greeting"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "greeting",
+        "prompt": " ",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "requestStationFrom",
+            "minConfidence": 0.5,
+            "nextTurn": "setStationFrom"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "wie komme ich zur Reeperbahn?",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "setStationFrom",
+        "prompt": "Hamburg Hauptbahnhof",
+        "wakeword": " "
+      }
+    ]
+  },
+  {
+    "description": "HVV Verbindungen C",
+    "name": "HVV_VERBINDUNGEN_C",
+    "turns": [
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          },
+          {
+            "entities": [],
+            "intent": "confirmation",
+            "minConfidence": 0.5,
+            "nextTurn": "greeting"
+          }
+        ],
+        "name": "start",
+        "prompt": "öffne HVV",
+        "wakeword": "Alexa"
+      },
+      {
+        "criterias": [
+          {
+            "entities": [],
+            "intent": "greeting",
+            "minConfidence": 0.5,
+            "nextTurn": "requestConnection"
+          }
+        ],
+        "name": "greeting",
+        "prompt": " ",
+        "wakeword": " "
+      },
+      {
+        "criterias": [
+          {
+            "entities": [
+              {
+                "minConfidence": 0.75,
+                "name": "stationFrom",
+                "value": "hamburg hauptbahnhof"
+              },
+              {
+                "minConfidence": 0.75,
+                "name": "stationTo",
+                "value": "reeperbahn"
+              }
+            ],
+            "intent": "connection",
+            "minConfidence": 0.5,
+            "nextTurn": "end"
+          }
+        ],
+        "name": "requestConnection",
+        "prompt": "wie komme ich von Hamburg Hauptbahnhof zur Reeperbahn?",
+        "wakeword": " "
+      }
+    ]
+  }
+]
