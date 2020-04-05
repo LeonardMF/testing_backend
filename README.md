@@ -9,6 +9,7 @@ Follow the instruction in der [Docs](https://docs.python.org/3/tutorial/venv.htm
     $ echo 'venv' > .gitignore
 
     $ source venv/bin/activate
+    $ pip install -r manager/manager/requirements.txt
 
 Freeze the requirements:
     $ pip freeze > requirements.txt
@@ -42,6 +43,8 @@ Start with docker compose.
     $ docker-compose up mongodb
 
 Edit in NoSQLBooster for MongoDB.
+
+Add database `test` and user `app` with `ReadWrite` permissions for `test` database.
 
 ##  Run
 

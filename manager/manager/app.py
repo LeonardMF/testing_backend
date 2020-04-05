@@ -12,14 +12,12 @@ from manager.testresult_endpoint import testresult_endpoint
 app = Flask(__name__)
 CORS(app)
 
+# app.config['MONGO_HOST'] = 'mongodb'
+# app.config['MONGO_PORT'] = '27017'
 app.config['MONGO_DBNAME'] = 'test'
-
-# username = "app"
-# password = "password
-# host = "localhost"
-# port = "27017"
-
-# mongo_client = MongoClient('mongodb://%s:%s@%s:%s/' % (username, password, host, port))
+# app.config['MONGO_USERNAME'] = 'app'
+# app.config['MONGO_PASSWORD'] = 'password'
+# app.config['MONGO_AUTH_SOURCE'] = 'admin'
 
 app.config['MONGO_URI'] = 'mongodb://app:password@mongodb:27017/test'
 
