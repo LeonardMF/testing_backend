@@ -42,7 +42,14 @@ Start with docker compose.
 
     $ docker-compose up mongodb
 
-Edit in NoSQLBooster for MongoDB.
+Edit the `db` in NoSQLBooster for MongoDB.
+
+Connection URI: 'mongodb://localhost:27017'
+Authentication:
+- Mode: Basic
+- Auth DB: admin
+- User Name: user
+- Password: password
 
 Add database `test` and user `app` with `ReadWrite` permissions for `test` database.
 
